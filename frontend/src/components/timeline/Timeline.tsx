@@ -19,7 +19,7 @@ const projects: Project[] = [
     title: "AI Facial recognition",
     description: "A functional AI-based facial recognition program, contributing to a practical application of computer vision technology.",
     technologies: ["Python", "OpenCV", "Mediapipe"],
-    imageUrl: "/images/profile.jpg",
+    imageUrl: "/videos/Facemesh.mp4",
     link: "https://github.com/AdamLinYuan/FaceMeshModule-and-Full-body-detection"
   },
   {
@@ -28,7 +28,7 @@ const projects: Project[] = [
     title: "Game",
     description: "A 2D 1v1 Brawling Game made using Unity Game Engine",
     technologies: ["C#", "Unity", "Procreate"],
-    imageUrl: "https://www.youtube.com/embed/58JzbiLiyu8",
+    imageUrl: "/videos/game.mp4",
     link: "https://github.com/AdamLinYuan/Unity-2D-Game"
   },
   {
@@ -38,7 +38,7 @@ const projects: Project[] = [
     description: "A Daily book search web game, inspired by Wordle",
     technologies: ["Google Books API", "Python", "Django", "Html", "CSS"],
     imageUrl: "/images/bookle.jpg",
-    link: "https://github.com/yourusername/ecommerce"
+    link: "https://github.com/phantomsheepp/group1a_wad_project"
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const projects: Project[] = [
     description: "A weather dashboard that shows forecasts and historical data",
     technologies: ["React", "Chart.js", "Weather API"],
     imageUrl: "/images/projects/weather.jpg",
-    link: "https://github.com/yourusername/weather-app"
+    link: "https://github.com/guorbit"
   },
   {
     id: 5,
@@ -56,7 +56,7 @@ const projects: Project[] = [
     description: "My team and I came up with an innovative solution for the MCR pathway which allowed their mentor and mentees to be paired up efficiently",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Django", "Postgres"],
     imageUrl: "/images/CFG2025.jpg",
-    link: "https://github.com/adamlinyuan/my-portfolio"
+    link: "https://github.com/cfgglasgow25/Team-6"
   },
   {
     id: 6,

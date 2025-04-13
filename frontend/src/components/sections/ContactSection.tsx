@@ -1,5 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import emailjs from 'emailjs-com';
+import { motion } from 'framer-motion';
 
 // SVG Icons for better visual consistency
 const LinkedInIcon = () => (
@@ -26,16 +27,24 @@ const LocationIcon = () => (
   </svg>
 );
 
-// Social Media Contact Card Component
+// Social Media Contact Card Component with animation
 const ContactCard: React.FC<{
   icon: React.ReactNode;
   title: string;
   value: string;
   link?: string;
   className?: string;
-}> = ({ icon, title, value, link, className = "" }) => {
+  delay?: number;
+}> = ({ icon, title, value, link, className = "", delay = 0 }) => {
   const content = (
-    <div className={`flex items-start p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all ${className}`}>
+    <motion.div 
+      className={`flex items-start p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      viewport={{ once: false, margin: "-50px" }}
+      whileHover={{ scale: 1.05 }}
+    >
       <div className="flex items-center justify-center h-10 w-10 rounded-md bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 mr-4">
         {icon}
       </div>
@@ -43,19 +52,19 @@ const ContactCard: React.FC<{
         <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">{title}</h4>
         <p className="mt-1 text-md font-medium text-gray-900 dark:text-white">{value}</p>
       </div>
-    </div>
+    </motion.div>
   );
 
   if (link) {
     return (
-      <a 
+      <motion.a 
         href={link} 
         target="_blank" 
         rel="noopener noreferrer" 
         className="block hover:scale-[1.02] transition-transform"
       >
         {content}
-      </a>
+      </motion.a>
     );
   }
 
@@ -164,35 +173,55 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-gray-50 dark:bg-gray-900 scroll-m-16">
+    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900 scroll-m-16 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-900 dark:text-white">
+          <motion.h2 
+            className="text-3xl font-bold mb-2 text-center text-gray-900 dark:text-white"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false, margin: "-100px" }}
+          >
             Get In Touch
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: false, margin: "-100px" }}
+          >
             I'm currently available for freelance work or collaboration opportunities. Feel free to reach out!
-          </p>
+          </motion.p>
           
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left column - Contact Cards */}
             <div className="lg:col-span-1">
+              <motion.h3 
+                className="text-xl font-semibold mb-6 text-gray-900 dark:text-white"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false, margin: "-100px" }}
+              >
+                Contact Information
+              </motion.h3>
+              
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
-                  Contact Information
-                </h3>
-                
                 <ContactCard 
                   icon={<EmailIcon />}
                   title="Email"
                   value="hello@adamyuan.dev"
                   link="mailto:hello@adamyuan.dev"
+                  delay={0.1}
                 />
                 
                 <ContactCard 
                   icon={<LocationIcon />}
                   title="Location"
                   value="Glasgow, United Kingdom"
+                  delay={0.2}
                 />
                 
                 <ContactCard 
@@ -201,6 +230,7 @@ const ContactSection: React.FC = () => {
                   value="Connect with me"
                   link="https://linkedin.com/in/adamlinyuan"
                   className="bg-[#f3f7ff] dark:bg-[#162038] border-l-4 border-blue-600"
+                  delay={0.3}
                 />
                 
                 <ContactCard 
@@ -209,19 +239,38 @@ const ContactSection: React.FC = () => {
                   value="Check my projects"
                   link="https://github.com/adamlinyuan"
                   className="bg-[#f8f8f8] dark:bg-[#1a1a1a] border-l-4 border-gray-800"
+                  delay={0.4}
                 />
               </div>
             </div>
             
             {/* Right column - Contact Form */}
-            <div className="lg:col-span-2">
+            <motion.div 
+              className="lg:col-span-2"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: false, margin: "-100px" }}
+            >
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
-                <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
+                <motion.h3 
+                  className="text-xl font-semibold mb-6 text-gray-900 dark:text-white"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: false }}
+                >
                   Send Me a Message
-                </h3>
+                </motion.h3>
                 
+                {/* Status messages */}
                 {submitStatus === 'success' ? (
-                  <div className="bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-300 p-4 rounded-lg mb-6 flex items-start">
+                  <motion.div 
+                    className="bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-300 p-4 rounded-lg mb-6 flex items-start"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
                     <svg className="w-5 h-5 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                     </svg>
@@ -229,9 +278,14 @@ const ContactSection: React.FC = () => {
                       <p className="font-medium">Message sent successfully!</p>
                       <p className="text-sm">Thank you for reaching out. I'll get back to you as soon as possible.</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ) : submitStatus === 'error' ? (
-                  <div className="bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-300 p-4 rounded-lg mb-6 flex items-start">
+                  <motion.div 
+                    className="bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-300 p-4 rounded-lg mb-6 flex items-start"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
                     <svg className="w-5 h-5 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path>
                     </svg>
@@ -239,9 +293,10 @@ const ContactSection: React.FC = () => {
                       <p className="font-medium">Something went wrong</p>
                       <p className="text-sm">Please try again or contact me directly via email.</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ) : null}
                 
+                {/* Form with animated fields */}
                 <form 
                   onSubmit={handleSubmit} 
                   className="space-y-6" 
@@ -251,7 +306,12 @@ const ContactSection: React.FC = () => {
                   <input type="hidden" name="form-name" value="contact" />
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Name input */}
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      viewport={{ once: false }}
+                    >
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Name <span className="text-red-500">*</span>
                       </label>
@@ -266,10 +326,15 @@ const ContactSection: React.FC = () => {
                       {errors.name && (
                         <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>
                       )}
-                    </div>
+                    </motion.div>
                     
                     {/* Email input */}
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      viewport={{ once: false }}
+                    >
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Email <span className="text-red-500">*</span>
                       </label>
@@ -284,11 +349,16 @@ const ContactSection: React.FC = () => {
                       {errors.email && (
                         <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
                       )}
-                    </div>
+                    </motion.div>
                   </div>
                   
                   {/* Message textarea */}
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    viewport={{ once: false }}
+                  >
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Message <span className="text-red-500">*</span>
                     </label>
@@ -303,11 +373,16 @@ const ContactSection: React.FC = () => {
                     {errors.message && (
                       <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
                     )}
-                  </div>
+                  </motion.div>
                   
                   {/* Submit button */}
-                  <div>
-                    <button 
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    viewport={{ once: false }}
+                  >
+                    <motion.button 
                       type="submit"
                       disabled={isSubmitting}
                       className={`w-full md:w-auto px-6 py-3 rounded-md text-white font-medium transition-all 
@@ -315,6 +390,8 @@ const ContactSection: React.FC = () => {
                           ? 'bg-blue-400 cursor-not-allowed' 
                           : 'bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg'
                         }`}
+                      whileHover={!isSubmitting ? { scale: 1.05 } : {}}
+                      whileTap={!isSubmitting ? { scale: 0.95 } : {}}
                     >
                       {isSubmitting ? (
                         <div className="flex items-center justify-center">
@@ -325,11 +402,11 @@ const ContactSection: React.FC = () => {
                           Sending...
                         </div>
                       ) : 'Send Message'}
-                    </button>
-                  </div>
+                    </motion.button>
+                  </motion.div>
                 </form>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
