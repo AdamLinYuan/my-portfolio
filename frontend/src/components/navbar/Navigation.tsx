@@ -16,7 +16,7 @@ const Navigation: React.FC = () => {
         </li>
         <li>
           <a 
-            href="/cv.pdf" 
+            href="/files/AdamYuanResume.pdf" 
             download
             className="hover:text-blue-300 transition-colors"
           >

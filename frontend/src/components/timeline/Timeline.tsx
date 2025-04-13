@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import TimelineItem from './TimelineItem';
 import { useInView } from 'react-intersection-observer';
 
@@ -70,22 +70,10 @@ const projects: Project[] = [
 ];
 
 const Timeline: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
   const { ref: todayRef, inView: todayInView } = useInView({
     threshold: 0.5,
     triggerOnce: false
   });
-
-  // Track scroll position for parallax effects
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setScrolled(scrollPosition > 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className="max-w-5xl mx-auto mt-12 relative px-4 py-12">

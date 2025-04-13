@@ -1,21 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const HeroSection: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   
-  // Track scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   // Get scroll progress relative to the section
   const { scrollYProgress } = useScroll({
     target: sectionRef,
