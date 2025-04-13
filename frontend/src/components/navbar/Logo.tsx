@@ -15,16 +15,20 @@ const Logo: React.FC<LogoProps> = ({ size = 'medium' }) => {
     large: 'text-3xl md:text-4xl py-3 px-4'
   };
   
-  // Container styles with theme indicator
+  // Make sure we define fixed classes to avoid string interpolation issues
+  const hoverBorderClass = isDarkMode ? 'hover:border-blue-400' : 'hover:border-amber-400';
+  
   const containerClass = `
     bg-slate-700 rounded-md transition-all duration-300 
     hover:bg-slate-600 hover:shadow-lg 
-    hover:shadow-${isDarkMode ? 'blue' : 'amber'}-500/30 
     transform hover:scale-105 
     border border-transparent 
-    hover:border-${isDarkMode ? 'blue' : 'amber'}-400 
+    ${hoverBorderClass}
     cursor-pointer
     relative
+    overflow-hidden
+    shine-effect
+    animate-heartbeat
   `;
   
   // Handle logo click to toggle theme
@@ -32,14 +36,14 @@ const Logo: React.FC<LogoProps> = ({ size = 'medium' }) => {
     e.preventDefault();
     toggleDarkMode();
   };
-  
-  // Small indicator for current theme
-
 
   return (
     <Link to="/" onClick={handleLogoClick} className="no-underline focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-md">
       <div className={containerClass}>
-        <span className={`font-bold ${sizeClasses[size]} text-white block font-['Noto_Sans_SC']`}>
+        {/* Silver shine overlay element - with animation fix */}
+        <div className="absolute inset-0 animate-shine-slower pointer-events-none"></div>
+        
+        <span className={`font-bold ${sizeClasses[size]} text-white block font-['Noto_Sans_SC'] relative z-10`}>
           袁霖
         </span>
       </div>

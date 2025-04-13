@@ -14,15 +14,15 @@ const Navigation: React.FC = () => {
             Home
           </HashLink>
         </li>
-        <li>
+        {/* <li>
           <a 
             href="/files/AdamYuanResume.pdf" 
             download
             className="hover:text-blue-300 transition-colors"
           >
-            Resume
+            Download CV
           </a>
-        </li>
+        </li> */}
         <li>
           <a 
             href="https://linkedin.com/in/adamlinyuan" 

@@ -42,7 +42,7 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    date: "April 2024",
+    date: "January 2025",
     title: "Astraeus-01 satellite",
     description: "Developing the CCSDS compression algorithm for the Astraeus-01 satellite",
     technologies: ["C++", "Python", "CI/CD"],

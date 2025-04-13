@@ -39,11 +39,15 @@ const ContactCard: React.FC<{
   const content = (
     <motion.div 
       className={`flex items-start p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all ${className}`}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay }}
-      viewport={{ once: false, margin: "-50px" }}
-      whileHover={{ scale: 1.05 }}
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -50 }}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      viewport={{ 
+        once: false, 
+        amount: 0.3,
+        margin: "-100px"
+      }}
     >
       <div className="flex items-center justify-center h-10 w-10 rounded-md bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 mr-4">
         {icon}
@@ -57,14 +61,14 @@ const ContactCard: React.FC<{
 
   if (link) {
     return (
-      <motion.a 
+      <a 
         href={link} 
         target="_blank" 
         rel="noopener noreferrer" 
-        className="block hover:scale-[1.02] transition-transform"
+        className="block"
       >
         {content}
-      </motion.a>
+      </a>
     );
   }
 
@@ -212,50 +216,63 @@ const ContactSection: React.FC = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left column - Contact Cards */}
             <div className="lg:col-span-1">
-              <motion.h3 
-                className="text-xl font-semibold mb-6 text-gray-900 dark:text-white"
-                initial={{ opacity: 0, x: -20 }}
+              <motion.div 
+                className="space-y-6"
+                initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.6 }}
-                viewport={{ once: false, margin: "-100px" }}
+                viewport={{ 
+                  once: false,
+                  amount: 0.3,
+                  margin: "-100px"
+                }}
               >
-                Contact Information
-              </motion.h3>
+                <motion.h3 
+                  className="text-xl font-semibold mb-6 text-gray-900 dark:text-white"
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  Contact Information
+                </motion.h3>
               
-              <div className="space-y-4">
-                <ContactCard 
-                  icon={<EmailIcon />}
-                  title="Email"
-                  value="hello@adamyuan.dev"
-                  link="mailto:hello@adamyuan.dev"
-                  delay={0.1}
-                />
-                
-                <ContactCard 
-                  icon={<LocationIcon />}
-                  title="Location"
-                  value="Glasgow, United Kingdom"
-                  delay={0.2}
-                />
-                
-                <ContactCard 
-                  icon={<LinkedInIcon />}
-                  title="LinkedIn"
-                  value="Connect with me"
-                  link="https://linkedin.com/in/adamlinyuan"
-                  className="bg-[#f3f7ff] dark:bg-[#162038] border-l-4 border-blue-600"
-                  delay={0.3}
-                />
-                
-                <ContactCard 
-                  icon={<GitHubIcon />}
-                  title="GitHub"
-                  value="Check my projects"
-                  link="https://github.com/adamlinyuan"
-                  className="bg-[#f8f8f8] dark:bg-[#1a1a1a] border-l-4 border-gray-800"
-                  delay={0.4}
-                />
-              </div>
+                <div className="space-y-4">
+                  <ContactCard 
+                    icon={<EmailIcon />}
+                    title="Email"
+                    value="adamyuanprofessional@gmail.com"
+                    link="mailto:adamyuanprofessional@gmail.com"
+                    delay={0.1}
+                  />
+                  
+                  <ContactCard 
+                    icon={<LocationIcon />}
+                    title="Location"
+                    value="Glasgow, United Kingdom"
+                    delay={0.2}
+                  />
+                  
+                  <ContactCard 
+                    icon={<LinkedInIcon />}
+                    title="LinkedIn"
+                    value="Connect with me"
+                    link="https://linkedin.com/in/adamlinyuan"
+                    className="bg-[#f3f7ff] dark:bg-[#162038] border-l-4 border-blue-600"
+                    delay={0.3}
+                  />
+                  
+                  <ContactCard 
+                    icon={<GitHubIcon />}
+                    title="GitHub"
+                    value="Check my projects"
+                    link="https://github.com/adamlinyuan"
+                    className="bg-[#f8f8f8] dark:bg-[#1a1a1a] border-l-4 border-gray-800"
+                    delay={0.4}
+                  />
+                </div>
+              </motion.div>
             </div>
             
             {/* Right column - Contact Form */}

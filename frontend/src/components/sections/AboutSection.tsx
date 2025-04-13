@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import ResumePreview from '../ResumePreview';  // Import the ResumePreview component
 
 // Skill category component with animation
 const SkillCategory: React.FC<{title: string, skills: string[], delay?: number}> = ({ title, skills, delay = 0 }) => (
@@ -14,18 +15,13 @@ const SkillCategory: React.FC<{title: string, skills: string[], delay?: number}>
       {title}
     </h4>
     <div className="flex flex-wrap gap-2">
-      {skills.map((skill, index) => (
-        <motion.span 
+      {skills.map((skill) => (
+        <span 
           key={skill}
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, delay: delay + index * 0.05 }}
-          viewport={{ once: false }}
-          whileHover={{ scale: 1.05, backgroundColor: '#dbeafe' }}
-          className="bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full text-sm transition-all hover:bg-blue-100 dark:hover:bg-blue-900"
+          className="bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full text-sm transition-all hover:bg-blue-100 dark:hover:bg-blue-900 hover:scale-105"
         >
           {skill}
-        </motion.span>
+        </span>
       ))}
     </div>
   </motion.div>
@@ -58,6 +54,7 @@ const ExperienceItem: React.FC<{
 
 const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);  // Add state for resume popup
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -138,18 +135,18 @@ const AboutSection: React.FC = () => {
                   </motion.p>
                   
                   {/* Resume button with hover animation */}
-                  <motion.a 
-                    href="/files/AdamYuanResume.pdf" 
-                    target="_blank"
+                  <motion.button 
+                    onClick={() => setIsResumeOpen(true)}
                     className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-medium"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                     </svg>
-                    Resume
-                  </motion.a>
+                    View Resume
+                  </motion.button>
                 </motion.div>
                 
                 {/* Contact info with fade-in effect */}
@@ -269,16 +266,16 @@ const AboutSection: React.FC = () => {
                 delay={0.1}
               />
               <ExperienceItem 
-                role="Software Engineer Intern"
+                role="Spring Software Engineering Intern"
                 company="JPMorgan Chase & Co"
-                period="Jun 2023 - Aug 2023"
-                description="Developed and maintained financial software applications, focusing on backend services with Spring Boot and PostgreSQL."
+                period="Apr 2025 - Apr 2025"
+                description="Gained insight into J.P. Morgan’s internal operations, team structures, and agile workflows during the Spring SWE Internship, while also enhancing technical skills by building a full-stack web app and winning the Code for Good Hackathon through close collaboration with mentors and stakeholders."
                 delay={0.2}
               />
               <ExperienceItem 
-                role="Software Engineer Intern"
+                role="Summer Software Development Engineering Intern"
                 company="Expedia Group"
-                period="Jun 2022 - Aug 2022"
+                period="Jun 2025 - Aug 2025"
                 description="Worked on frontend development using React and TypeScript, implementing new features for the hotel booking platform."
                 delay={0.3}
               />
@@ -321,6 +318,10 @@ const AboutSection: React.FC = () => {
           </motion.div>
         </div>
       </div>
+      <ResumePreview 
+        isOpen={isResumeOpen} 
+        onClose={() => setIsResumeOpen(false)} 
+      />
     </section>
   );
 };
