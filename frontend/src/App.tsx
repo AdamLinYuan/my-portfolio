@@ -6,8 +6,15 @@ import Layout from './Layout';
 
 const App = () => {
   useEffect(() => {
-    // Initialize EmailJS
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+    // Initialize EmailJS only if the key exists
+    const emailJsKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    
+    if (emailJsKey) {
+      emailjs.init(emailJsKey);
+      console.log('EmailJS initialized successfully');
+    } else {
+      console.warn('EmailJS Public Key not found in environment variables');
+    }
   }, []);
 
   return (

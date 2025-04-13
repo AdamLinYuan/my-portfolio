@@ -141,21 +141,35 @@ const ContactSection: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Send email using EmailJS
-      const result = await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID, 
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      );
-      
-      console.log('Email sent successfully', result.text);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      // Check if EmailJS credentials exist
+      if (!import.meta.env.VITE_EMAILJS_SERVICE_ID || 
+          !import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 
+          !import.meta.env.VITE_EMAILJS_PUBLIC_KEY) {
+        
+        console.warn('EmailJS credentials missing. Contact form is in demo mode.');
+        
+        // Simulate success for demo purposes
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        // Send email using EmailJS
+        const result = await emailjs.send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message
+          },
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        );
+        
+        console.log('Email sent successfully', result.text);
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      }
       
       setTimeout(() => {
         setSubmitStatus('idle');
