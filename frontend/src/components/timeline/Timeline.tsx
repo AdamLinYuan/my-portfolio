@@ -44,9 +44,9 @@ const projects: Project[] = [
     id: 4,
     date: "April 2024",
     title: "Astraeus-01 satellite",
-    description: "A weather dashboard that shows forecasts and historical data",
-    technologies: ["React", "Chart.js", "Weather API"],
-    imageUrl: "/images/projects/weather.jpg",
+    description: "Developing the CCSDS compression algorithm for the Astraeus-01 satellite",
+    technologies: ["C++", "Python", "CI/CD"],
+    imageUrl: "/images/guorbit.jpg",
     link: "https://github.com/guorbit"
   },
   {
