@@ -226,7 +226,7 @@ const AboutSection: React.FC = () => {
                       href="https://linkedin.com/in/adamlinyuan" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                      className="text-gray-600 hover:text-blue-400 dark:text-gray-400 dark:hover:text-blue-300"
                       whileHover={{ scale: 1.2, rotate: -5 }}
                       initial={{ opacity: 0, scale: 0.5 }}
                       whileInView={{ opacity: 1, scale: 1 }}
