@@ -3,17 +3,17 @@
   "name": "Adam Yuan Portfolio",
   "icons": [
     {
-      "src": "adam.ico",
+      "src": "lin.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "adam192.png",
+      "src": "lin192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "adam512.png",
+      "src": "lin512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
