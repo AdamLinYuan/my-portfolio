@@ -52,7 +52,7 @@ const projects: Project[] = [
   {
     id: 5,
     date: "April 2025",
-    title: "JPMorgan Code For Good Hackathon Winner",
+    title: "JPMorgan Code For Good Hackathon | 1st Place 🏆",
     description: "My team and I came up with an innovative solution for the MCR pathway which allowed their mentor and mentees to be paired up efficiently",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Django", "Postgres"],
     imageUrl: "/images/CFG2025.jpg",

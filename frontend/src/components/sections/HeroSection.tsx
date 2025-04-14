@@ -76,7 +76,7 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            Full-Stack Developer & UI/UX Enthusiast
+            Full-Stack Developer
           </motion.p>
           
           <motion.div 

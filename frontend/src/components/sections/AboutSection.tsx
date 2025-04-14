@@ -107,12 +107,13 @@ const AboutSection: React.FC = () => {
               <div className="sm:w-2/3 lg:w-3/4 p-4 sm:p-5 flex flex-col sm:flex-row">
                 {/* Bio summary with staggered text animation */}
                 <motion.div 
-                  className="sm:w-2/3 pr-4"
+                  className="sm:w-2/3 pr-4 flex flex-col"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: false }}
                 >
+                  <div>
                   <motion.h3 
                     className="text-lg font-semibold text-gray-900 dark:text-white mb-2"
                     initial={{ opacity: 0, y: 10 }}
@@ -133,20 +134,29 @@ const AboutSection: React.FC = () => {
                     applications that solve real-world problems. My experience spans web development,
                     AI, and data processing with a focus on clean, efficient solutions.
                   </motion.p>
+                  </div>
                   
-                  {/* Resume button with hover animation */}
+                  {/* Resume button with hover animation - positioned with margin-top:auto */}
+                  <motion.div
+                  className="flex justify-center mt-auto mb-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  viewport={{ once: false }}
+                  >
                   <motion.button 
                     onClick={() => setIsResumeOpen(true)}
-                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-medium"
+                    className="inline-flex items-center px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-medium shadow-sm"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                    <svg className="w-8 h-8 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                    <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                     </svg>
                     View Resume
                   </motion.button>
+                  </motion.div>
                 </motion.div>
                 
                 {/* Contact info with fade-in effect */}
@@ -273,7 +283,7 @@ const AboutSection: React.FC = () => {
                 delay={0.2}
               />
               <ExperienceItem 
-                role="Summer Software Development Engineering Intern"
+                role="Incoming Summer Software Development Engineering Intern"
                 company="Expedia Group"
                 period="Jun 2025 - Aug 2025"
                 description="Worked on frontend development using React and TypeScript, implementing new features for the hotel booking platform."
