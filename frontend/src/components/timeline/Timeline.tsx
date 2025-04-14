@@ -83,7 +83,7 @@ const Timeline: React.FC = () => {
         {/* Single continuous line - IMPORTANT: Adjusted to work with the Today marker */}
         <div 
           className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-400 via-blue-500 to-indigo-600"
-          style={{ top: '9rem', bottom: '2rem' }} 
+          style={{ top: '2rem', bottom: '2rem' }} 
         ></div>
         
         {/* Timeline items */}
