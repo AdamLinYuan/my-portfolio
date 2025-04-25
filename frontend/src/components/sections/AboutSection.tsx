@@ -286,7 +286,7 @@ const AboutSection: React.FC = () => {
                 role="Incoming Summer Software Development Engineering Intern"
                 company="Expedia Group"
                 period="Jun 2025 - Aug 2025"
-                description="Worked on frontend development using React and TypeScript, implementing new features for the hotel booking platform."
+                description="TBD"
                 delay={0.3}
               />
             </div>
